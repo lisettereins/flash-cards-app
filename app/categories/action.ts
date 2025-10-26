@@ -46,3 +46,18 @@ export async function updateCard(cardId: string, question: string, answer:string
   }
   return { success: true };
 }
+
+export async function deleteCard(cardId: string) {
+  const supabase = await createClient();
+
+  const { error } = await supabase
+    .from("cards")
+    .delete()
+    .eq("id", cardId)
+    .select();
+
+  if (error) {
+    throw new Error("delete failed");
+  }
+  return { success: true };
+}
