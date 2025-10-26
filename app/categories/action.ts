@@ -31,3 +31,18 @@ export async function createCard(question: string, answer: string) {
   }
   return { success: true };
 }
+
+export async function updateCard(cardId: string, question: string, answer:string) {
+  const supabase = await createClient();
+
+  const { error } = await supabase
+    .from("cards")
+    .update({ question, answer })
+    .eq("id", cardId)
+    .select();
+
+  if (error) {
+    throw new Error("update failed");
+  }
+  return { success: true };
+}
