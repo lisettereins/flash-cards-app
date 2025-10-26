@@ -2,7 +2,7 @@ import EditCardForm from "@/components/edit-card-form";
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 
-export default async function EditBookPage({
+export default async function EditCardPage({
   params,
 }: {
   params: Promise<{ id: string }>;
