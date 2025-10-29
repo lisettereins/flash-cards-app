@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 import { updateCard } from "@/app/categories/action";
 
 
@@ -12,12 +12,12 @@ export default function EditCardForm({
 }) {
    const [question, setQuestion] = useState(card.question);
   const [answer, setAnswer] = useState(card.answer);
-  const router = useRouter();
+  //const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     await updateCard(card.id, question, answer);
-    router.push("/cards");
+    
   }
 
   return (
