@@ -17,12 +17,12 @@ export async function createCategory(name: string) {
   return { success: true };
 }
 
-export async function createCard(question: string, answer: string) {
+export async function createCard(question: string, answer: string, categoryId: string) {
   const supabase = await createClient();
 
   const { error } = await supabase
     .from("cards")
-    .insert({ question, answer })
+    .insert({ question, answer, categories_id: categoryId })
     .select();
     
 
