@@ -4,14 +4,14 @@ import { createCard } from "@/app/categories/action";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function NewCardForm({card,}: {card: {id:string, question:string, answer:string};}) {
+export default function NewCardForm({card, categoryId,}: {card: {id:string, question:string, answer:string}; categoryId:string;}) {
   const [question, setQuestion] = useState(card.question);
   const [answer, setAnswer] = useState(card.answer);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await createCard(question, answer);
+    await createCard(question, answer, categoryId);
     router.refresh();
   };
 
